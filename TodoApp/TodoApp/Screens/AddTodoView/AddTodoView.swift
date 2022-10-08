@@ -8,16 +8,32 @@
 import SwiftUI
 
 struct AddTodoView: View {
+    
+    @State var textFieldText: String = "Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog   "
+    
     var body: some View {
         
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                .navigationTitle("Add a Todo")
-                .navigationBarItems(trailing:
-                    Button(action: {
-                        print("Save Button is pressed")
-                    }) {
-                        Text("Save")
-                    })
+        VStack {
+            ScrollView{
+                TextField("Enter a todo", text: $textFieldText, axis: .vertical)
+                    .disabled(false)
+                    .frame(width: .infinity, height: .infinity)
+                    .padding()
+                    .font(.title2)
+                    .ignoresSafeArea(.keyboard, edges: .bottom)
+
+            }
+                    .ignoresSafeArea(.keyboard, edges: .bottom)
+                    .navigationTitle("Add a Todo")
+    //                .ignoresSafeArea(.keyboard, edges: .bottom)
+                    .navigationBarItems(trailing:
+                        Button(action: {
+                            print("Save Button is pressed")
+                        }) {
+                            Text("Save")
+                        })
+        }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
 
 
     }
@@ -25,6 +41,9 @@ struct AddTodoView: View {
 
 struct AddTodoView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTodoView()
+        NavigationView {
+            AddTodoView()
+
+        }
     }
 }
