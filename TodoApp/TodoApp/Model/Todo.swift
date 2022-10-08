@@ -7,12 +7,9 @@
 
 import Foundation
 
-struct Todo: Hashable, Equatable, Identifiable {
+struct Todo: Identifiable {
     
     var id = UUID()
-    
-    
-    
     var isCompleted: Bool
     var description: String
     var updatedDate: Date?

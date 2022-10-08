@@ -14,14 +14,18 @@ struct TodoCell: View {
     var body: some View {
         HStack(spacing: 3){
             
-            
-        
-            Image(systemName: todo.isCompleted ? "square.fill" : "square")
-                .resizable()
-                .frame(width: 50, height: 50)
-                .foregroundColor(.blue)
 
-            
+            Button {
+                print("Button is pressed")
+            } label: {
+                Image(systemName: todo.isCompleted ? "square.fill" : "square")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(.blue)
+
+            }.buttonStyle(PlainButtonStyle())
+
+
         
             Spacer()
             

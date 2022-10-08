@@ -9,23 +9,25 @@ import SwiftUI
 
 struct TodoListView: View {
     
-    
+    @EnvironmentObject var todoListViewModel : TodoListViewModel 
     
     var body: some View {
-        NavigationView{
-            List(MockData.sampleData) { todo in
-            
+        
+        List {
+            ForEach(todoListViewModel.todosArray) { todo in
                 TodoCell(todo: todo)
-                    
             }
-                .navigationTitle("Todo List 📖")
-                .navigationBarItems(trailing: NavigationLink("+", destination: AddTodoView()))
+
         }
+            .navigationTitle("Todo List 📖")
+            .navigationBarItems(trailing: NavigationLink("+", destination: AddTodoView()))
     }
 }
 
 struct TodoListView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoListView()
+        NavigationView {
+            TodoListView()
+        }
     }
 }

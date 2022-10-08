@@ -9,7 +9,10 @@ import SwiftUI
 
 struct AddTodoView: View {
     
-    @State var textFieldText: String = "Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog Wash the dog   "
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var todoListViewModel : TodoListViewModel
+
+    @State var textFieldText: String = ""
     
     var body: some View {
         
@@ -20,15 +23,14 @@ struct AddTodoView: View {
                     .frame(width: .infinity, height: .infinity)
                     .padding()
                     .font(.title2)
-                    .ignoresSafeArea(.keyboard, edges: .bottom)
 
             }
-                    .ignoresSafeArea(.keyboard, edges: .bottom)
                     .navigationTitle("Add a Todo")
-    //                .ignoresSafeArea(.keyboard, edges: .bottom)
                     .navigationBarItems(trailing:
                         Button(action: {
-                            print("Save Button is pressed")
+                        todoListViewModel.addTodo(description: textFieldText.description)
+                        presentationMode.wrappedValue.dismiss()
+                        
                         }) {
                             Text("Save")
                         })
