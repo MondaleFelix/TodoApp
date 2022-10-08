@@ -7,11 +7,20 @@
 
 import Foundation
 
-struct Todo: Hashable, Equatable {
+struct Todo: Hashable, Equatable, Identifiable {
+    
     var id = UUID()
     
-    let description: String
-    let updatedDate: Date?
-    let creationDate: Date
     
+    
+    var isCompleted: Bool
+    var description: String
+    var updatedDate: Date?
+    var creationDate: Date
+    
+}
+
+struct MockData {
+    
+    static let sampleData = [Todo(isCompleted: false, description: "Wash the car", creationDate: Date()),Todo(isCompleted: false, description: "Clean the room", creationDate: Date()),Todo(isCompleted: false, description: "Walk the dog", creationDate: Date())]
 }

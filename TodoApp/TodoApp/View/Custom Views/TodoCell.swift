@@ -9,19 +9,23 @@ import SwiftUI
 
 struct TodoCell: View {
     
+    let todo: Todo
+    
     var body: some View {
         HStack(spacing: 3){
             
-            Button {
-                print("Button is pressed")
-            } label: {
-                Image(systemName: "square")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-            }
+            
+        
+            Image(systemName: todo.isCompleted ? "square.fill" : "square")
+                .resizable()
+                .frame(width: 50, height: 50)
+                .foregroundColor(.blue)
+
+            
+        
             Spacer()
             
-            Text("Clean my room")
+            Text(todo.description)
                 .font(.title2)
                 .minimumScaleFactor(0.50)
                 .lineLimit(3)
@@ -29,7 +33,7 @@ struct TodoCell: View {
             
             Spacer()
             VStack {
-                Text("Created: 11/05/20")
+                Text("Created: ")
                 Text("Updated: 11/05/20")
             }
             .font(.system(size: 15))
@@ -41,6 +45,6 @@ struct TodoCell: View {
 
 struct TodoCell_Previews: PreviewProvider {
     static var previews: some View {
-        TodoCell()
+        TodoCell(todo: Todo(isCompleted: false, description: "Wash the dog", creationDate: Date()))
     }
 }
