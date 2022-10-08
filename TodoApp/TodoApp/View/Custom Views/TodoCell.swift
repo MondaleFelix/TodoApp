@@ -9,14 +9,16 @@ import SwiftUI
 
 struct TodoCell: View {
     
-    let todo: Todo
+    @EnvironmentObject var todoListViewModel : TodoListViewModel
+    @State var todo: Todo
     
     var body: some View {
         HStack(spacing: 3){
             
 
             Button {
-                print("Button is pressed")
+                todo.isCompleted.toggle()
+                todoListViewModel.deleteTodo(todo: todo)
             } label: {
                 Image(systemName: todo.isCompleted ? "square.fill" : "square")
                     .resizable()

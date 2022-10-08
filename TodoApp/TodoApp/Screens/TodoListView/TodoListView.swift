@@ -16,8 +16,15 @@ struct TodoListView: View {
         List {
             ForEach(todoListViewModel.todosArray) { todo in
                 TodoCell(todo: todo)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button {
+                            todoListViewModel.deleteTodo(todo: todo )
+                        } label: {
+                            Label("Complete", systemImage: "checkmark")
+                        }
+                        .tint(.green)
+                    }
             }
-
         }
             .navigationTitle("Todo List 📖")
             .navigationBarItems(trailing: NavigationLink("+", destination: AddTodoView()))

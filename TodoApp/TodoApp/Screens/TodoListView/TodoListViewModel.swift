@@ -15,6 +15,11 @@ class TodoListViewModel: ObservableObject {
         todosArray = []
     }
     
+    
+    func deleteTodo(todo: Todo) {
+        todosArray = todosArray.filter {$0.id != todo.id}
+    }
+    
     func addTodo(description: String) {
         let newTodo = Todo(isCompleted: false, description: description, creationDate: Date())
         todosArray.append(newTodo)
