@@ -40,7 +40,7 @@ struct TodoCell: View {
             Spacer()
             VStack {
                 Text("Created: \(todo.creationDate)")
-                Text(todo.updatedDate == nil ? "" : "Updated: ")
+                Text(todo.updatedDate == nil ? "" : "Updated: \(todo.updatedDate!)")
             }
             .font(.system(size: 15))
             

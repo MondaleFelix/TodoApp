@@ -17,7 +17,3 @@ struct Todo: Identifiable, Hashable {
     
 }
 
-struct MockData {
-    
-    static let sampleData = [Todo(isCompleted: false, description: "Wash the car", creationDate: "October"),Todo(isCompleted: false, description: "Clean the room", creationDate: "October"),Todo(isCompleted: false, description: "Walk the dog", creationDate: "October")]
-}

@@ -31,6 +31,7 @@ class TodoListViewModel: ObservableObject {
     func updateTodoDescription(todo: Todo, description: String) {
         if let index = todosArray.firstIndex(where: {$0.id == todo.id}) {
             todosArray[index].description = description
+            todosArray[index].updatedDate = Date().formatted(date: .numeric, time: .omitted)
         }
         print(todosArray)
     }
