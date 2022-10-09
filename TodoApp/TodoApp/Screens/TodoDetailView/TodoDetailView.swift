@@ -12,13 +12,10 @@ struct TodoDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var todoListViewModel : TodoListViewModel
 
-    
-    
-    @State var isBeingEdited: Bool = false
-    
     var todo: Todo
+
+    @State var isBeingEdited: Bool = false
     @State var textFieldText: String = ""
-    
     
     var body: some View {
         
@@ -33,7 +30,7 @@ struct TodoDetailView: View {
                     .navigationTitle("Todo Details")
                     .navigationBarItems(trailing: isBeingEdited ?
                                         
-//
+
                                         Button(action: {
                                         todoListViewModel.addTodo(description: textFieldText.description)
                                         presentationMode.wrappedValue.dismiss()
@@ -49,14 +46,16 @@ struct TodoDetailView: View {
                             Text("Edit")
                         })
         }
-        .ignoresSafeArea(.keyboard, edges: .bottom)
+        .onAppear() {
+            textFieldText = todoListViewModel.getTodoDescription(todo: todo)
+        }
     }
 }
 
 struct TodoDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            TodoDetailView(todo: Todo(isCompleted: false, description: "Wash your hands", creationDate: "Now"), textFieldText: "wash ur hands")
+            TodoDetailView(todo: Todo(isCompleted: false, description: "Wash your hands", creationDate: "Now"))
 
         }
     }

@@ -18,7 +18,7 @@ class TodoListViewModel: ObservableObject {
     
     func deleteTodo(todo: Todo) {
         todosArray = todosArray.filter {$0.id != todo.id}
-        print(todosArray)
+        
     }
     
     func addTodo(description: String) {
@@ -26,4 +26,7 @@ class TodoListViewModel: ObservableObject {
         todosArray.append(newTodo)
     }
     
+    func getTodoDescription(todo: Todo) -> String {
+        return todo.description
+    }
 }
