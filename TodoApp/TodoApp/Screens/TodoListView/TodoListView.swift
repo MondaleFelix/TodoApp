@@ -15,15 +15,18 @@ struct TodoListView: View {
         
         List {
             ForEach(todoListViewModel.todosArray) { todo in
-                TodoCell(todo: todo)
-                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                        Button {
-                            todoListViewModel.deleteTodo(todo: todo )
-                        } label: {
-                            Label("Complete", systemImage: "checkmark")
+                
+                NavigationLink(destination: TodoDetailView(todo: todo)) {
+                    TodoCell(todo: todo)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button {
+                                todoListViewModel.deleteTodo(todo: todo )
+                            } label: {
+                                Label("Complete", systemImage: "checkmark")
+                            }
+                            .tint(.green)
                         }
-                        .tint(.green)
-                    }
+                }
             }
         }
             .navigationTitle("Todo List 📖")

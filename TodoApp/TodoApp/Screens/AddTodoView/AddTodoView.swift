@@ -20,7 +20,6 @@ struct AddTodoView: View {
             ScrollView{
                 TextField("Enter a todo", text: $textFieldText, axis: .vertical)
                     .disabled(false)
-                    .frame(width: .infinity, height: .infinity)
                     .padding()
                     .font(.title2)
 
@@ -36,8 +35,6 @@ struct AddTodoView: View {
                         })
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
-
-
     }
 }
 
