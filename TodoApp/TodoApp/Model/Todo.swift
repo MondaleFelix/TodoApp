@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Todo: Identifiable {
+struct Todo: Identifiable, Hashable {
     
     var id = UUID()
     var isCompleted: Bool

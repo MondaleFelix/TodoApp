@@ -13,8 +13,8 @@ struct TodoListView: View {
     
     var body: some View {
         
-        List {
-            ForEach(todoListViewModel.todosArray) { todo in
+        List() {
+            ForEach(todoListViewModel.todosArray,id: \.self) { todo in
                 
                 NavigationLink(destination: TodoDetailView(todo: todo)) {
                     TodoCell(todo: todo)

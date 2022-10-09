@@ -32,7 +32,7 @@ struct TodoDetailView: View {
                                         
 
                                         Button(action: {
-                                        todoListViewModel.addTodo(description: textFieldText.description)
+                        todoListViewModel.updateTodoDescription(todo: todo, description: textFieldText.description)
                                         presentationMode.wrappedValue.dismiss()
                                         
                                         }) {
