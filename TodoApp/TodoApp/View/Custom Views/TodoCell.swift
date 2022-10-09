@@ -39,8 +39,8 @@ struct TodoCell: View {
             
             Spacer()
             VStack {
-                Text("Created: ")
-                Text("Updated: 11/05/20")
+                Text("Created: \(todo.creationDate)")
+                Text(todo.updatedDate == nil ? "" : "Updated: ")
             }
             .font(.system(size: 15))
             
@@ -51,6 +51,6 @@ struct TodoCell: View {
 
 struct TodoCell_Previews: PreviewProvider {
     static var previews: some View {
-        TodoCell(todo: Todo(isCompleted: false, description: "Wash the dog", creationDate: Date()))
+        TodoCell(todo: Todo(isCompleted: false, description: "Wash the dog", creationDate: "October"))
     }
 }

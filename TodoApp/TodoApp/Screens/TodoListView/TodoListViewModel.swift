@@ -18,10 +18,11 @@ class TodoListViewModel: ObservableObject {
     
     func deleteTodo(todo: Todo) {
         todosArray = todosArray.filter {$0.id != todo.id}
+        print(todosArray)
     }
     
     func addTodo(description: String) {
-        let newTodo = Todo(isCompleted: false, description: description, creationDate: Date())
+        let newTodo = Todo(isCompleted: false, description: description, creationDate: Date().formatted(date: .numeric, time: .omitted))
         todosArray.append(newTodo)
     }
     
