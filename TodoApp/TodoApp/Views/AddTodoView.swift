@@ -11,8 +11,8 @@ struct AddTodoView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var todoListViewModel : TodoListViewModel
-
     @State var textFieldText: String = ""
+    
     
     var body: some View {
         
@@ -22,14 +22,13 @@ struct AddTodoView: View {
                     .disabled(false)
                     .padding()
                     .font(.title2)
-
             }
                     .navigationTitle("Add a Todo")
                     .navigationBarItems(trailing:
                         Button(action: {
                         todoListViewModel.addTodo(description: textFieldText.description)
                         presentationMode.wrappedValue.dismiss()
-                        
+                    
                         }) {
                             Text("Save")
                         })
